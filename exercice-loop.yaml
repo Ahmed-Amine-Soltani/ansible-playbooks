@@ -1,0 +1,22 @@
+---
+- name: loop exercice
+  hosts: dev1
+  become: yes
+  grather_facts: no
+  vars_files: vars/vars_file.yaml
+  tasks:
+  - name: mysql and mongodb are installed
+    package:
+      name: {{ item }}
+      state: latest
+    loop:
+    - mysql
+    - mongodb-org
+
+  - name: mysql and mongodb are up
+    service:
+      name: {{ item }}
+      state: started
+    loop:
+    - mysql
+    - mongodb  

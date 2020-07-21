@@ -1,0 +1,19 @@
+---
+- name: test registered variables
+  hosts: ec2
+  become: yes
+  tasks:
+    name: install nginx 
+    package: 
+      name: nginx
+      state: present
+    register: nginx_install_output
+
+    name: print in terminal using debug
+    debug:
+      var: nginx_install_output
+    
+    name: copy the output to file
+    copy:
+      content: "{{ nginx_install_output }}"
+      dest: /tmp/task_output

@@ -1,0 +1,20 @@
+---
+- name: play for the management
+  hosts: ec2
+  become: yes
+  tasks:
+  - name: file copy
+    copy:
+      content: "Hello here"
+      dest: /tmp/hello.txt
+  - name: file copy
+    copy:
+      content: "hi here"
+      dest: /tmp/hi.txt
+  - name: archive files
+    archive:
+      path:
+      - /tmp/hello.txt
+      - /tmp/hi.txt
+      dest: /tmp/hh.zip
+      format: zip

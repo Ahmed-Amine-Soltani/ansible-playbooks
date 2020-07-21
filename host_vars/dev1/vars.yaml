@@ -1,0 +1,4 @@
+---
+ansible_host: 35.180.58.184
+ansible_private_key_file: ~/.ssh/paris-eu-west-3-key.pem
+ansible_ssh_user: ubuntu

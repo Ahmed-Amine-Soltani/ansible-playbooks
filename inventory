@@ -1,0 +1,9 @@
+#ec2 ansible_host=15.188.56.75 ansible_private_key_file=~/.ssh/ansibleuser-key ansible_ssh_user=ansibleuser
+#container ansible_host=localhost ansible_private_key_file=~/.ssh/ansibleuser-key ansible_ssh_user=ansibleuser ansible_ssh_port=2525
+
+[dev]
+dev1
+
+[prod]
+prod1
+prod2

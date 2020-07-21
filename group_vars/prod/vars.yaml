@@ -1,0 +1,4 @@
+---
+ansible_private_key_file: ~/.ssh/paris-eu-west-3-key.pem 
+ansible_ssh_user: ubuntu
+git_branch: branchV2

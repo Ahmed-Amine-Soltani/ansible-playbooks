@@ -1,0 +1,13 @@
+---
+- name: deply static website
+  hosts: dev1
+  become: yes
+  vars_files:
+  - vars/vars_file.yaml
+  tasks:
+  - name: import nginx install tasks
+    import_tasks: tasks/nginx-install.yaml
+  - name: download static web site
+    uri:
+      url: https://raw.githubusercontent.com/Ahmed-Amine-Soltani/static-web-site-for-test/{{ git_branch }}/index.html
+      dest: "{{ webserver_root_Dir }}"

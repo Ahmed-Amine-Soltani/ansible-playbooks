@@ -1,0 +1,7 @@
+assignment_users:
+- name: ahmed
+  role: developer
+- name: mouath
+  role: developper
+- name: ali
+  role: ops

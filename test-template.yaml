@@ -1,0 +1,18 @@
+---
+- name: test template
+  hosts: dev1
+  become: yes
+  vars:
+    app_pages:
+    - home
+    - login
+    - logout
+  tasks:
+  - name: use template module
+    template:
+      src: template/server.conf.j2
+      dest: /tmp/server.conf
+  - name: report is generated
+    template:
+      src: template/template-with-loop.conf.j2
+      dest: /tmp/app-report.conf

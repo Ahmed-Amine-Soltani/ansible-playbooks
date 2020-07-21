@@ -1,0 +1,30 @@
+---
+- name: deply static website
+  hosts: ec2
+  become: yes
+  vars_files:
+  - vars/vars_file.yaml
+  tasks:
+  - name: install nginx
+    package:
+      name: "{{ webserver }}"
+      state: present
+  - name: start nginx
+    service:
+      name: "{{ webserver }}"
+      state: started
+  - name: create nginx diractory
+    file:
+      path: "{{ webserver_root_Dir }}"
+      state: directory
+  - name: download static web site
+    uri:
+      url: https://raw.githubusercontent.com/Ahmed-Amine-Soltani/static-web-site-for-test/{{ git_branch }}/index.html
+      dest: "{{ webserver_root_Dir }}"
+  - name: clone git repo
+    git:
+      repo: https://github.com/Ahmed-Amine-Soltani/static-web-site-for-test.git 
+      dest: /var/www/html/repo
+  - name: debug
+    debug: 
+      msg: "the value of webserver is {{ git_branch }}"

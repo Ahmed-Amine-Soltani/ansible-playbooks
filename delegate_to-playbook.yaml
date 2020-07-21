@@ -1,0 +1,14 @@
+---
+- name: delegate to test
+  hosts: dev1
+  become: yes
+  gather_facts: no
+  vars_files:
+  - vars/vars_file.yaml
+  tasks:
+  - name: string is copied into a file
+    copy:
+      content: blablablabla
+      dest: /tmp/message.txt
+    delegate_to: localhost
+      
